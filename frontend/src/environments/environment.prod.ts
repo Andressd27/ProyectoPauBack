@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://your-backend-service.onrender.com/api',
+  apiBaseUrl: 'https://paula-backend-fxh0.onrender.com/api',
 };
