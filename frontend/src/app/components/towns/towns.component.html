@@ -1,0 +1,44 @@
+<section class="towns" id="towns">
+  <!-- Decorative top wave -->
+  <div class="towns__wave-top">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z" fill="#FFF8DC"/>
+    </svg>
+  </div>
+
+  <div class="towns__container">
+    <div class="towns__header">
+      <span class="towns__pre-title">🌿 Nuestro itinerario soñado</span>
+      <h2 class="section-title">Los Pueblos que Nos Esperan</h2>
+      <p class="section-subtitle">
+        Nueve destinos llenos de magia, historia y naturaleza.<br>
+        Haz clic en cada tarjeta para descubrir sus secretos 🐆
+      </p>
+    </div>
+
+    <div class="towns__loading" *ngIf="loading">
+      <div class="paw-loader">
+        <span>🐾</span><span>🐾</span><span>🐾</span>
+      </div>
+      <p>Explorando pueblos...</p>
+    </div>
+
+    <div class="towns__grid" *ngIf="!loading">
+      <app-town-card
+        *ngFor="let town of towns; let i = index"
+        [town]="town"
+        [index]="i">
+      </app-town-card>
+    </div>
+
+    <!-- Journey line -->
+    <div class="towns__journey">
+      <div class="journey-line">
+        <span *ngFor="let town of towns" class="journey-stop" [style.background]="town.color">
+          {{ town.animalEmoji }}
+          <span class="journey-label">{{ town.name }}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

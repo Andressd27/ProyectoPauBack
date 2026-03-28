@@ -1,0 +1,123 @@
+<section class="rsvp" id="rsvp">
+  <!-- Big animal decoration -->
+  <div class="rsvp__deco rsvp__deco--left">🦋</div>
+  <div class="rsvp__deco rsvp__deco--right">🌺</div>
+
+  <div class="rsvp__container">
+    <span class="rsvp__pre-title">🎂 El gran momento</span>
+    <h2 class="section-title" style="color: var(--animal-cream)">¿Vives esta aventura conmigo?</h2>
+    <p class="section-subtitle" style="color: var(--green-pale)">
+      Necesito saber si debo empacar doble porción de felicidad 🐾
+    </p>
+
+    <!-- Success message -->
+    <div class="rsvp__success" *ngIf="successMessage">
+      <div class="success-icon">🎉</div>
+      <h3>¡Respuesta recibida!</h3>
+      <p>{{ successMessage }}</p>
+      <div class="success-animals">🦋 🌸 🦜 🌿 🦅</div>
+    </div>
+
+    <!-- Form -->
+    <div class="rsvp__card" *ngIf="!successMessage">
+      <div class="rsvp__card-header">
+        <span>🐆</span>
+        <h3>Completa tu respuesta</h3>
+        <span>🌿</span>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-row">
+          <!-- Name -->
+          <div class="form-group" [class.has-error]="submitted && f['name'].errors">
+            <label for="name">
+              <span class="label-icon">🦁</span> Tu nombre
+            </label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="¿Cómo te llamas, viajera?"
+              autocomplete="name">
+            <span class="error" *ngIf="submitted && f['name'].errors?.['required']">
+              Tu nombre es requerido 🐾
+            </span>
+            <span class="error" *ngIf="submitted && f['name'].errors?.['minlength']">
+              Al menos 2 caracteres por favor
+            </span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group" [class.has-error]="submitted && f['email'].errors">
+            <label for="email">
+              <span class="label-icon">🦜</span> Tu correo
+            </label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="tucorreo@ejemplo.com"
+              autocomplete="email">
+            <span class="error" *ngIf="submitted && f['email'].errors?.['required']">
+              El correo es requerido 🐾
+            </span>
+            <span class="error" *ngIf="submitted && f['email'].errors?.['email']">
+              Ingresa un correo válido
+            </span>
+          </div>
+        </div>
+
+        <!-- Response -->
+        <div class="form-group">
+          <label><span class="label-icon">🦋</span> ¿Aceptas el viaje?</label>
+          <div class="response-options">
+            <label class="response-option yes" [class.active]="form.value.response === 'yes'">
+              <input type="radio" formControlName="response" value="yes">
+              <span class="option-emoji">🎉</span>
+              <span class="option-text">¡Sí, acepto!</span>
+            </label>
+            <label class="response-option maybe" [class.active]="form.value.response === 'maybe'">
+              <input type="radio" formControlName="response" value="maybe">
+              <span class="option-emoji">🤔</span>
+              <span class="option-text">Quizás...</span>
+            </label>
+            <label class="response-option no" [class.active]="form.value.response === 'no'">
+              <input type="radio" formControlName="response" value="no">
+              <span class="option-emoji">🙈</span>
+              <span class="option-text">No puedo</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Favorite town -->
+        <div class="form-group">
+          <label for="favoriteTown">
+            <span class="label-icon">🗺️</span> ¿Cuál pueblo te emociona más?
+          </label>
+          <select id="favoriteTown" formControlName="favoriteTown">
+            <option value="">Todos me emocionan 🐾</option>
+            <option *ngFor="let town of towns" [value]="town">{{ town }}</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label for="message">
+            <span class="label-icon">💌</span> Un mensaje para mí (opcional)
+          </label>
+          <textarea
+            id="message"
+            formControlName="message"
+            rows="3"
+            placeholder="Cuéntame lo que sientes, mi amor... 🌸">
+          </textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="loading">
+          <span *ngIf="!loading">💌 Enviar mi respuesta</span>
+          <span *ngIf="loading">🐾 Enviando...</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

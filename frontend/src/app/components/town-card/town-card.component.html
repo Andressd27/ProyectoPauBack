@@ -1,0 +1,54 @@
+<div class="card" [class.flipped]="flipped" (click)="toggle()">
+  <div class="card__inner">
+
+    <!-- FRONT -->
+    <div class="card__front">
+      <div class="card__image">
+        <img [src]="getImageUrl()" [alt]="town.name" loading="lazy">
+        <div class="card__image-overlay" [style.background]="'linear-gradient(to top, ' + town.color + 'ee, transparent)'"></div>
+      </div>
+
+      <div class="card__badge" [style.background]="town.color">
+        {{ town.animalEmoji }} {{ town.animal }}
+      </div>
+
+      <div class="card__front-content">
+        <div class="card__emoji">{{ town.emoji }}</div>
+        <h3 class="card__name">{{ town.name }}</h3>
+        <p class="card__climate">🌡️ {{ town.climate }}</p>
+        <p class="card__distance">📍 {{ town.distance }}</p>
+        <div class="card__hint">Toca para descubrir ✨</div>
+      </div>
+    </div>
+
+    <!-- BACK -->
+    <div class="card__back" [style.background]="'linear-gradient(145deg, ' + town.color + '22, #1b2838ee)'">
+      <div class="card__back-header" [style.background]="town.color">
+        <span>{{ town.animalEmoji }}</span>
+        <h3>{{ town.name }}</h3>
+        <span>{{ town.emoji }}</span>
+      </div>
+
+      <div class="card__back-body">
+        <p class="card__description">{{ town.description }}</p>
+
+        <div class="card__highlights">
+          <h4>✨ No te pierdas:</h4>
+          <ul>
+            <li *ngFor="let h of town.highlights">
+              <span class="highlight-dot" [style.background]="town.color"></span>
+              {{ h }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="card__meta">
+          <span>📍 {{ town.distance }}</span>
+          <span>🌡️ {{ town.climate }}</span>
+        </div>
+      </div>
+
+      <div class="card__close">Toca para cerrar 🐾</div>
+    </div>
+  </div>
+</div>

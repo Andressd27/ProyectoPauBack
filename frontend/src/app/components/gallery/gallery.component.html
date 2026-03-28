@@ -1,0 +1,40 @@
+<section class="gallery" id="gallery">
+  <div class="gallery__container">
+    <span class="gallery__pre-title">🎨 Momentos que nos esperan</span>
+    <h2 class="section-title">Galería del Viaje</h2>
+    <p class="section-subtitle">
+      Una muestra de la belleza natural y cultural que descubriremos juntos 🌿
+    </p>
+
+    <div class="gallery__grid">
+      <div
+        *ngFor="let item of items"
+        class="gallery__item"
+        [class.wide]="item.span === 'wide'"
+        [class.tall]="item.span === 'tall'"
+        (click)="openImage(item)">
+        <img [src]="getImageUrl(item)" [alt]="item.title" loading="lazy">
+        <div class="gallery__overlay">
+          <span class="gallery__emoji">{{ item.emoji }}</span>
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" *ngIf="selectedImage" (click)="closeImage()">
+    <div class="lightbox__content" (click)="$event.stopPropagation()">
+      <button class="lightbox__close" (click)="closeImage()">✕</button>
+      <img [src]="getImageUrl(selectedImage)" [alt]="selectedImage.title">
+      <div class="lightbox__caption">
+        <span>{{ selectedImage.emoji }}</span>
+        <div>
+          <h3>{{ selectedImage.title }}</h3>
+          <p>{{ selectedImage.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

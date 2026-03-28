@@ -1,0 +1,63 @@
+<section class="hero" id="hero">
+  <!-- Floating animals background -->
+  <div class="hero__animals">
+    <span *ngFor="let a of animals; let i = index"
+          class="animal-float"
+          [style.animation-delay]="(i * 0.4) + 's'"
+          [style.left]="(i * 12 + 2) + '%'">
+      {{ a }}
+    </span>
+  </div>
+
+  <!-- Leopard pattern overlay -->
+  <div class="hero__pattern"></div>
+
+  <!-- Content -->
+  <div class="hero__content">
+    <div class="hero__badge">
+      <span>🎂</span> Feliz Cumpleaños, Amor
+    </div>
+
+    <h1 class="hero__title">
+      Un Viaje Mágico<br>
+      <em>por las tierras de Boyacá</em>
+    </h1>
+
+    <p class="hero__subtitle">
+      Porque el mejor regalo eres tú y la mejor aventura<br>
+      es vivirla juntos entre paisajes que nos quitan el aliento 🌿
+    </p>
+
+    <div class="hero__stats">
+      <div class="stat">
+        <span class="stat__number">9</span>
+        <span class="stat__label">Pueblos Mágicos</span>
+      </div>
+      <div class="stat__divider">🐾</div>
+      <div class="stat">
+        <span class="stat__number">∞</span>
+        <span class="stat__label">Momentos Juntos</span>
+      </div>
+      <div class="stat__divider">🐾</div>
+      <div class="stat">
+        <span class="stat__number">1</span>
+        <span class="stat__label">Gran Amor</span>
+      </div>
+    </div>
+
+    <div class="hero__buttons">
+      <button class="btn btn--primary" (click)="scrollToTowns()">
+        🗺️ Ver el itinerario
+      </button>
+      <button class="btn btn--secondary" (click)="scrollToRsvp()">
+        💌 ¡Acepto el viaje!
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll" (click)="scrollToTowns()">
+    <span>🦋</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>

@@ -1,0 +1,138 @@
+/* ===============================================
+   ANIMAL KINGDOM THEME – Paula's Birthday Trip
+   =============================================== */
+
+:root {
+  --forest-green: #2D6A4F;
+  --green-light: #52B788;
+  --green-pale: #B7E4C7;
+  --animal-orange: #F4A261;
+  --animal-yellow: #E9C46A;
+  --animal-brown: #8B5E3C;
+  --animal-cream: #FFF8DC;
+  --animal-dark: #1B2838;
+  --animal-coral: #E76F51;
+  --animal-teal: #264653;
+  --animal-gold: #D4A017;
+  --animal-purple: #9B5DE5;
+  --animal-pink: #F72585;
+  --white: #FFFFFF;
+  --shadow: rgba(27, 40, 56, 0.15);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Nunito', 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--animal-cream);
+  color: var(--animal-dark);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--green-pale); }
+::-webkit-scrollbar-thumb { background: var(--forest-green); border-radius: 4px; }
+
+/* Paw print decoration utility */
+.paw-decoration::before {
+  content: '🐾';
+  opacity: 0.15;
+  font-size: 4rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Section titles */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--forest-green);
+  margin-bottom: 0.5rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--animal-orange), var(--animal-yellow));
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+  }
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--animal-brown);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 0.98rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.4); }
+  50% { box-shadow: 0 0 20px 10px rgba(244, 162, 97, 0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spots {
+  0% { background-position: 0 0, 20px 20px; }
+  100% { background-position: 40px 0, 60px 20px; }
+}
+
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-fade-up { animation: fadeInUp 0.8s ease forwards; }

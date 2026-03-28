@@ -1,0 +1,167 @@
+.towns {
+  position: relative;
+  background: linear-gradient(180deg, #FFF8DC 0%, #B7E4C7 100%);
+  padding: 0 0 5rem;
+
+  &__wave-top {
+    svg {
+      width: 100%;
+      height: 80px;
+      display: block;
+    }
+  }
+
+  &__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__pre-title {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--forest-green);
+    background: rgba(45, 106, 79, 0.1);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+  }
+
+  &__loading {
+    text-align: center;
+    padding: 4rem;
+
+    .paw-loader {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+
+      span {
+        animation: bounce 0.6s ease infinite;
+        &:nth-child(2) { animation-delay: 0.15s; }
+        &:nth-child(3) { animation-delay: 0.3s; }
+      }
+    }
+
+    p { color: var(--forest-green); font-weight: 600; }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  &__journey {
+    padding: 2rem 0 3rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-gutter: stable;
+
+    .journey-line {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      min-width: max-content;
+      margin: 0 auto;
+      position: relative;
+      padding-bottom: 1rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--forest-green), var(--animal-orange), var(--animal-yellow));
+        z-index: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+    .journey-stop {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin: 0 2rem;
+      cursor: default;
+      transition: transform 0.2s;
+      border: 3px solid white;
+
+      &:hover { transform: scale(1.2); }
+
+      .journey-label {
+        position: absolute;
+        bottom: -1.7rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--animal-dark);
+        white-space: nowrap;
+        font-family: var(--font-sans);
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  .towns {
+    padding: 0 0 3.5rem;
+
+    &__container {
+      padding: 0 1rem;
+    }
+
+    &__header {
+      margin-bottom: 2rem;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    &__journey {
+      padding: 1.25rem 0 2.5rem;
+
+      .journey-stop {
+        width: 52px;
+        height: 52px;
+        font-size: 1.3rem;
+        margin: 0 1.1rem;
+
+        .journey-label {
+          font-size: 0.65rem;
+          bottom: -1.5rem;
+        }
+      }
+    }
+  }
+}
